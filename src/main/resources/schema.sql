@@ -1,0 +1,26 @@
+CREATE SCHEMA IF NOT EXISTS college;
+SET NAMES 'UTF8MB4';
+SET TIME_ZONE = 'America/Sao_Paulo';
+SET TIME_ZONE = '-3';
+
+USE college;
+
+DROP TABLE IF EXISTS Student;
+CREATE TABLE Student (
+    registration_number VARCHAR(100)
+        UNSIGNED NOT NULL PRIMARY KEY,
+    name VARCHAR(200) NOT NULL,
+    bio VARCHAR(200) DEFAULT NOT NULL,
+    course VARCHAR(200) NOT NULL,
+    address VARCHAR(255) NOT NULL,
+    gender VARCHAR(50) NOT NULL,
+    email VARCHAR(200) NOT NULL,
+    password VARCHAR(200) DEFAULT NOT NULL,
+    ADAI_campus VARCHAR(200) NOT NULL,
+    phone_number VARCHAR(200) NOT NULL,
+    enabled BOOLEAN DEFAULT FALSE,
+    using_mfa BOOLEAN DEFAULT FALSE,
+    image_url VARCHAR(255) DEFAULT 'teste.png',
+    create_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT UQ_Student_Email UNIQUE (email)
+);
